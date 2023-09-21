@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- This is an SEO Change -->
-    <!-- Added few more meta tags for SEO (keywords, description and author)-->
+    <!-- This is an SEO Change --> <!-- Added few more meta tags for SEO (keywords, description and author)-->
     <meta name="keywords" content="budget, personal-budget">
     <meta name="description" content="A free personal budget application">
     <meta name="author" content="Vamshi Krishna">
@@ -18,11 +17,9 @@
 
     <a href="#main-content" class="skip-to-content">Skip to Content</a>
 
-    <!-- This is a Semantic HTML Change -->
-    <!-- Changed div tag to nav tag-->
+    <!-- This is a Semantic HTML Change --> <!-- Changed div tag to nav tag-->
     <nav>
-        <!-- This is a a11y tag-->
-        <!--Added role to the unordered list for accessibility-->
+        <!-- This is a a11y tag--> <!--Added role to the unordered list for accessibility-->
         <ul role="link">
             <li><a href="/">Homepage</a></li>
             <li><a href="about.html">About</a></li>
@@ -36,14 +33,12 @@
         <h2>A personal-budget management app</h2>
     </div>
 
-    <!-- This is an A11y Change -->
-    <!-- added aria-label for a11y change -->
+    <!-- This is an A11y Change --> <!-- added aria-label for a11y change -->
     <main class="center" id="main" aria-label="main">
 
         <div class="page-area">
 
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Stay on track</h1>
                 <p>
@@ -53,8 +48,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Alerts</h1>
                 <p>
@@ -62,8 +56,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Results</h1>
                 <p>
@@ -73,8 +66,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Free</h1>
                 <p>
@@ -82,8 +74,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Stay on track</h1>
                 <p>
@@ -93,8 +84,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article>
                 <h1>Alerts</h1>
                 <p>
@@ -102,8 +92,7 @@
                 </p>
             </article>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <div class="text-box">
                 <h1>Donut - chart</h1>
                 <p>
@@ -111,8 +100,7 @@
                 </p>
             </div>
     
-            <!-- This is a Semantic HTML Change -->
-            <!--changed the div tag to article tag -->
+            <!-- This is a Semantic HTML Change --> <!--changed the div tag to article tag -->
             <article class="text-box">
                 <h1>Pie-Chart</h1>
                 <p>
@@ -122,18 +110,15 @@
 
         </div>
 
-        <!-- This is a Semantic HTML Change -->
-        <!--changed the div tag to aside tag -->
+        <!-- This is a Semantic HTML Change --> <!--changed the div tag to aside tag -->
         <aside class="image-container" >
-            <!-- This is an A11y Change -->
-            <!--Added am alt attribute for the accessibility-->
+            <!-- This is an A11y Change --> <!--Added am alt attribute for the accessibility-->
             <img src="calculator-image.jpg" alt="A calculator which is very useful for calculating budgets" width="460" height="345">
         </aside>
 
     </main>
 
-    <!-- This is a Semantic HTML Change -->
-    <!--changed the div tag to footer tag -->
+    <!-- This is a Semantic HTML Change --> <!--changed the div tag to footer tag -->
     <footer class="bottom">
         <div class="center">
             All rights reserved &copy; Vamshi Krishna
@@ -145,7 +130,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" integrity="sha512-SIMGYRUjwY8+gKg7nn9EItdD8LCADSDfJNutF9TPrvEo86sQmFMh6MyralfIyhADlajSxqc7G0gs7+MwWF/ogQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        var dataSource = {
+        var data = {
             datasets: [
                 {
                     data: [],
@@ -163,111 +148,79 @@
             labels: []
         };
 
+        // create a pie chart
         function createChart() {
             var ctx = document.getElementById("myChart").getContext("2d");
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
-                data: dataSource
+                data: data
             });
         }
 
+        //create a do-nut chart
+        function createD3Chart() {
+            // Set up dimensions and radius for the chart
+            const width = 250;
+            const height = 25s0;
+            const radius = Math.min(width, height) / 2;
+    
+            // Create a color scale
+            const color = d3.scaleOrdinal()
+                .domain(data.labels)
+                .range(data.datasets[0].backgroundColor); // Use the backgroundColor from data
+    
+            // Create an SVG element within the container
+            const svg = d3.select(".donut-chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2},${height / 2})`);
+    
+            // Generate a pie layout
+            const pie = d3.pie()
+                .value(d => d);
+    
+            // Generate the arc for each slice
+            const arc = d3.arc()
+                .innerRadius(radius - 45) // Set inner radius for the donut
+                .outerRadius(radius);
+    
+            // Create the donut chart
+            const arcs = svg.selectAll("arc")
+                .data(pie(data.datasets[0].data))
+                .enter()
+                .append("g")
+                .attr("class", "arc");
+    
+            // Add slices to the chart
+            arcs.append("path")
+                .attr("d", arc)
+                .attr("fill", (d, i) => color(i)); // Use the color scale
+    
+            // Add labels to the chart
+            arcs.append("text")
+                .attr("transform", d => `translate(${arc.centroid(d)})`)
+                .attr("text-anchor", "middle")
+                .text((d, i) => data.labels[i]);
+        }
+    
         function getBudget() {
-            axios.get('/budget')
+            axios.get('http://localhost:3000/budget')
             .then(function (res) {
-                console.log(res);
+                // console.log(res);
+                data.labels = []; // Clear existing labels
+                data.datasets[0].data = []; // Clear existing data
                 for (var i = 0; i < res.data.budget.length; i++) {
-                    dataSource.datasets[0].data[i] = res.data.budget[i].budget;
-                    dataSource.labels[i] = res.data.budget[i].title;
+                    data.labels.push(res.data.budget[i].title);
+                    data.datasets[0].data.push(res.data.budget[i].budget);
                 }
-                    createChart();
+                createChart();
+                createD3Chart();
             });
         }
         getBudget();
         // createChart();
-    </script>
-    <script>
-
-    var data = {
-                datasets: [
-                    {
-                        data: [],
-                        backgroundColor: [
-                            '#ff5733',
-                            '#337dff',
-                            '#33ff51',
-                            '#ffd033',
-                            '#8a33ff',
-                            '#ff8933',
-                            "#33e5ff"
-                        ],
-                    }
-                ],
-                labels: []
-            };
-    
-    
-            function createD3Chart() {
-        // Set up dimensions and radius for the chart
-        const width = 200;
-        const height = 200;
-        const radius = Math.min(width, height) / 2;
-    
-        // Create a color scale
-        const color = d3.scaleOrdinal()
-            .domain(data.labels)
-            .range(data.datasets[0].backgroundColor); // Use the backgroundColor from data
-    
-        // Create an SVG element within the container
-        const svg = d3.select(".donut-chart")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${width / 2},${height / 2})`);
-    
-        // Generate a pie layout
-        const pie = d3.pie()
-            .value(d => d);
-    
-        // Generate the arc for each slice
-        const arc = d3.arc()
-            .innerRadius(radius - 45) // Set inner radius for the donut
-            .outerRadius(radius);
-    
-        // Create the donut chart
-        const arcs = svg.selectAll("arc")
-            .data(pie(data.datasets[0].data))
-            .enter()
-            .append("g")
-            .attr("class", "arc");
-    
-        // Add slices to the chart
-        arcs.append("path")
-            .attr("d", arc)
-            .attr("fill", (d, i) => color(i)); // Use the color scale
-    
-        // Add labels to the chart
-        arcs.append("text")
-            .attr("transform", d => `translate(${arc.centroid(d)})`)
-            .attr("text-anchor", "middle")
-            .text((d, i) => data.labels[i]);
-    }
-    
-    function getBudget() {
-        axios.get('/budget')
-        .then(function (res) {
-            // console.log(res);
-            data.labels = []; // Clear existing labels
-            data.datasets[0].data = []; // Clear existing data
-            for (var i = 0; i < res.data.budget.length; i++) {
-                data.labels.push(res.data.budget[i].title);
-                data.datasets[0].data.push(res.data.budget[i].budget);
-            }
-            createD3Chart();
-        });
-    }
-    
-    getBudget();
     </script>
 </body>
 </html>

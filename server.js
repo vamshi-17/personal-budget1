@@ -1,14 +1,20 @@
+// BUDGET API
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 const fs = require('fs');
 
-app.use('/', express.static('public'));
+
+// app.use('/', express.static('public'));
+app.use(cors());
 
 
-app.get('/hello', (req, res) => {
-    res.send('Hello World!');
-});
+// app.get('/hello', (req, res) => {
+//     res.send('Hello World!');
+// });
+
+// C:\NBAD\dev\personal-budget1\server.js C:\\NBAD\\dev\\personal-budget1\\
 
 app.get('/budget', (req, res) => {
     fs.readFile('temp_data.json','utf8',(err,data) => {
@@ -22,5 +28,5 @@ app.get('/budget', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`API is served at http://localhost:${port}`);
 });
